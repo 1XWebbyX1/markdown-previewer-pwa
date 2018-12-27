@@ -20,6 +20,7 @@
   transition: background-image 1s;
 
   #taskbar{
+    position: fixed;
     height: 50px;
     width: 100%;
     margin: 0;
@@ -29,9 +30,18 @@
     background: var(--toolbar);
     color: var(--textFont);
     border-bottom: .5px solid black;
-    box-shadow: 0px 10px 25px black;
 
   #theme-switch {
+    z-index: 99;
+    margin-right: 5%;
+    font-size: calc(1.3em + 1vmax);
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  #save {
     z-index: 99;
     margin-right: 5%;
     font-size: calc(1.3em + 1vmax);

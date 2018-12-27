@@ -63,5 +63,6 @@ Here is a tip--
 ♥ You can switch the theme using the toggle button at the top right corner of the screen ♥
 
 
-Remember the editor does not save the text you enter.
+Important Note: The state will be saved until editor is reloaded. To open embedded links, switch to a new tab or data in editor will be lost.
+
 `;

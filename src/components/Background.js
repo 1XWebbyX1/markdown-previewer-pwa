@@ -2,8 +2,8 @@ import React from 'react'
 import $ from 'jquery'
 import asyncComponent from './asyncComponent/async'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faToggleOn, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import {faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faToggleOn, faInfoCircle, faSave, faArrowLeft  } from '@fortawesome/free-solid-svg-icons'
+
 
 
 
@@ -49,11 +49,13 @@ class Background extends React.Component {
     super(props);
     this.state = {
       markdown: placeholder,
-      info: faInfoCircle
+      info: faInfoCircle,
+      placeholder: placeholder
     };
     this.handleChange = this.handleChange.bind(this);
     this.switch = this.switch.bind(this);
     this.toggleInfo = this.toggleInfo.bind(this);
+    this.save = this.save.bind(this);
     this.animate = this.animate.bind(this);
     this.theme = 'dark';
     this.on = true;
@@ -70,7 +72,7 @@ class Background extends React.Component {
     if(this.props.markdown !== info){
        this.props.addText(info);
     }
-    else this.props.addText(placeholder);
+    else this.props.addText(this.state.placeholder);
 
     if(this.state.info === faArrowLeft){
       this.setState({
@@ -104,6 +106,11 @@ class Background extends React.Component {
      }
 
 
+     save(){
+       this.setState({placeholder : $('.editor textarea').text()});
+     }
+
+
  animate(){
    $(".back").addClass('blinks');
    setTimeout(function() {
@@ -115,6 +122,7 @@ class Background extends React.Component {
     return (
        <div class="back">
          <div id='taskbar'>
+          <FontAwesomeIcon id="save" icon={faSave} onClick={this.save} />
           <FontAwesomeIcon id="info" onClick={this.toggleInfo} icon={this.state.info} />
           <FontAwesomeIcon id="theme-switch" icon={faToggleOn} onClick={this.switch} />
          </div>
