@@ -1,0 +1,60 @@
+.preview {
+  overflow: scroll;
+  margin: 0 0.2%;
+//  margin-bottom: 0;
+  margin-left: 0;
+  width: 49.8%;
+  height: 100%;
+  background: #0d0d0d; //fallback
+  background: var(--textArea);
+
+  #view {
+    padding: 5%;
+    padding-right: 0;
+    margin-top: 5%;
+    line-height: 1.2;
+  }
+
+  //customizing styles for markdown library----------
+  table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table th {
+    background-color: #004d80;
+  }
+
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  table tr:nth-child(even) {
+    background-color: var(--tableColor);
+  }
+
+  table tr:hover {
+    background-color: #99ccff;
+  }
+
+  h1 {
+    font-size: 2.6vmax;
+  }
+
+  h2 {
+    font-size: 2.2vmax;
+  }
+
+  h3 {
+    font-size: 1.8vmax;
+  }
+
+  code{
+    width: 50%;
+    color: #ff0066;
+  }
+
+}

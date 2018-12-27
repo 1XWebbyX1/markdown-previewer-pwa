@@ -1,0 +1,55 @@
+@media only screen and (max-width: 580px) {
+  //for mobile phones or small tablets
+
+  body {
+    font-size: 2vmax;
+  }
+  body .back {
+    width: 100vw;
+    &:focus-within {min-height: 1000px !important;}
+  }
+
+  .editor {
+    textarea:focus-within {
+      height: 1000px !important;
+      font-size: 3.5vmax !important;
+    }
+
+  }
+
+
+
+  body .back #theme-switch {
+    top: 10px;
+    left: 82%;
+    font-size: 3vmax;
+  }
+
+  body .back #info {
+    top: 10px;
+    font-size: 3vmax;
+    left: 92%;
+  }
+
+  body .toolbar {
+   //  left: 1%;
+    h3 {
+      padding: 5%;
+      font-size: 2.7vmax;
+      text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px){
+   body .back #theme-switch {
+   top: 1.5%;
+    left: 80%;
+  }
+
+  body .back #info {
+    top: 1.5%;
+    left: 88%;
+  }
+
+}

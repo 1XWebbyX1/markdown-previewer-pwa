@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Cutive|Cutive+Mono");
+
+
+
+body {
+  background-color: black; //fallback
+  background-color: var(--body);
+  color: white; // fallback
+  color: var(--font);
+  font-family: "Cutive", serif;
+  font-size: 1.3vmax;
+  min-height: 100%;
+  width: 100%;
+  transition: all 1s;
+  overflow-y: scroll;
+}
+
+#app{
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space */
+  background: transparent; /* optional: just make scrollbar invisible */
+}
+
+@-moz-document url-prefix() {
+  html,
+  body {
+    overflow: hidden !important;
+  }
+}
