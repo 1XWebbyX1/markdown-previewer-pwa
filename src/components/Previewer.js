@@ -7,8 +7,19 @@ const Toolbar = asyncComponent(() =>
         import('./Toolbar').then(module => module.default)
 );
 
+marked.setOptions({
+  breaks: true,
+});
 
+// INSERTS target="_blank" INTO HREF TAGS (required for codepen links)
 const renderer = new marked.Renderer();
+renderer.link = function (href, title, text) {
+  return `<a target="_blank" href="${href}">${text}` + '</a>';
+}
+renderer.code = function(code, language) {
+  return '<pre><code class=language-' + language + '>' + code + '</code></pre>';
+}
+
 
 
 class Preview extends React.Component {
