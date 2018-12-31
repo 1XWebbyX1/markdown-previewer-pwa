@@ -53,11 +53,14 @@ class Background extends React.Component {
       placeholder: placeholder
     };
     this.handleChange = this.handleChange.bind(this);
-    this.switch = this.switch.bind(this);
+    this.switchTheme = this.switchTheme.bind(this);
     this.toggleInfo = this.toggleInfo.bind(this);
     this.save = this.save.bind(this);
     this.animate = this.animate.bind(this);
+    this.goEditorFullScreen = this.goEditorFullScreen.bind(this);
+    this.goPreviewFullScreen = this.goPreviewFullScreen.bind(this);
     this.theme = 'dark';
+    this.fullScreen = false;
     this.on = true;
     this.back = false;
   }
@@ -86,8 +89,31 @@ class Background extends React.Component {
 
   }
 
+  goEditorFullScreen(){
+    this.fullScreen = !this.fullScreen;
+    if(this.fullScreen){
+      $('.editor').css('height', '100vh');
+      $('.preview').css('height', '0');
+    }else{
+      $('.editor').css('height', '49.5%');
+      $('.preview').css('height', '49.8%');
+    }
+  }
+
+  goPreviewFullScreen(){
+    this.fullScreen = !this.fullScreen;
+    if(this.fullScreen){
+     $('.preview').css('height', '100vh');
+     $('.editor').css('height', '0');
+   }else{
+     $('.editor').css('height', '49.5%');
+     $('.preview').css('height', '49.8%');
+   }
+  }
+
+
   //handle switch for theme change ------------------
-  switch(){
+  switchTheme(){
     if(this.theme === 'dark') {
       for(let obj in lightScheme){
          document.documentElement.style.setProperty(obj, lightScheme[obj]);
@@ -106,9 +132,9 @@ class Background extends React.Component {
      }
 
 
-     save(){
+save(){
        this.setState({placeholder : $('.editor textarea').text()});
-     }
+ }
 
 
  animate(){
@@ -124,11 +150,11 @@ class Background extends React.Component {
          <div id='taskbar'>
           <FontAwesomeIcon id="save" icon={faSave} onClick={this.save} />
           <FontAwesomeIcon id="info" onClick={this.toggleInfo} icon={this.state.info} />
-          <FontAwesomeIcon id="theme-switch" icon={faToggleOn} onClick={this.switch} />
+          <FontAwesomeIcon id="theme-switch" icon={faToggleOn} onClick={this.switchTheme} />
          </div>
         <div class="parent">
-         <Editor markdown={this.props.markdown} onChange={this.handleChange}/>
-         <Preview markdown={this.props.markdown}/>
+         <Editor markdown={this.props.markdown} onChange={this.handleChange} onClick={this.goEditorFullScreen}/>
+         <Preview markdown={this.props.markdown} onClick={this.goPreviewFullScreen}/>
         </div>
        </div>
     );

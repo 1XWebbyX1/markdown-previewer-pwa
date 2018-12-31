@@ -11,7 +11,7 @@ marked.setOptions({
   breaks: true,
 });
 
-// INSERTS target="_blank" INTO HREF TAGS (required for codepen links)
+// INSERTS target="_blank" INTO HREF TAGS
 const renderer = new marked.Renderer();
 renderer.link = function (href, title, text) {
   return `<a target="_blank" href="${href}">${text}` + '</a>';
@@ -26,7 +26,7 @@ class Preview extends React.Component {
   render() {
     return (
         <div class="preview">
-            <Toolbar id="preview-tool" text='Previewer'/>
+            <Toolbar id="preview-tool" text='Previewer' onClick={this.props.onClick}/>
             <div id="view" dangerouslySetInnerHTML={{__html: marked(
             this.props.markdown, { renderer: renderer })}} />
        </div>

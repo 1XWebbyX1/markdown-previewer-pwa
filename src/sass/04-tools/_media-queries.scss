@@ -7,22 +7,64 @@
   body .back {
     width: 100vw;
     &:focus-within {min-height: 1000px !important;}
+    .parent{
+      flex-direction: column;
+      justify-content: flex-start;
+    }
   }
 
   .editor {
+    margin-top: 12%;
+    overflow-x: hidden;
+    width: 100%!important;
+    height: 49.5%;
     textarea:focus-within {
       height: 1000px !important;
       font-size: 3.5vmax !important;
     }
 
-    .preview{
-      code{
-        width: 50%;
-        height: auto;
-        padding: 1px 2px 2px 2px;
-        font-size: 11px !important;
+    .toolbar{
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .arrows{
+        padding-right: 4%;
       }
+      h3 {
+        padding: 5%;
+        padding-right: 0;
+        font-size: 2.7vmax;
+        text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
+      }
+    }
+  }
 
+  .preview{
+    margin-top: 0.5%;
+    overflow-x: hidden;
+    width: 100%!important;
+    height: 49.8%;
+    code{
+      width: 50%;
+      height: auto;
+      padding: 1px 2px 2px 2px;
+      font-size: 11px !important;
+    }
+    .toolbar{
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .arrows{
+        padding-right: 4%;
+      }
+      h3 {
+        padding: 5%;
+        padding-right: 0;
+        font-size: 2.7vmax;
+        text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
+      }
     }
 
   }
@@ -41,14 +83,6 @@
     left: 92%;
   }
 
-  body .toolbar {
-   //  left: 1%;
-    h3 {
-      padding: 5%;
-      font-size: 2.7vmax;
-      text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
-    }
-  }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 800px){

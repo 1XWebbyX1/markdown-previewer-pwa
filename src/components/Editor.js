@@ -11,7 +11,7 @@ class Editor extends React.Component {
   render() {
     return (
         <div class="editor">
-           <Toolbar id="edit-tool" text='Editor'/>
+           <Toolbar id="edit-tool" text='Editor' onClick={this.props.onClick}/>
             <textarea onChange={this.props.onChange} value={this.props.markdown} type="text"/>
         </div>
     );
