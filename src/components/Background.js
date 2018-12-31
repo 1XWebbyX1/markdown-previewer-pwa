@@ -86,8 +86,7 @@ class Background extends React.Component {
         info: faArrowLeft
       })
     }
-
-  }
+}
 
   goEditorFullScreen(){
     this.fullScreen = !this.fullScreen;
@@ -115,26 +114,27 @@ class Background extends React.Component {
   //handle switch for theme change ------------------
   switchTheme(){
     if(this.theme === 'dark') {
-      for(let obj in lightScheme){
-         document.documentElement.style.setProperty(obj, lightScheme[obj]);
-       }
-      this.theme = 'light';
+        for(let obj in lightScheme){
+           document.documentElement.style.setProperty(obj, lightScheme[obj]);
+         }
+         this.theme = 'light';
     } else {
          for(let obj in darkScheme){
             document.documentElement.style.setProperty(obj, darkScheme[obj]);
           }
          this.theme = 'dark';
-    }
-
-    //toggle blink animation ----------------------------------------
-      import ('../sass/03-utilities/_animations.scss')
+   }
+        //toggle blink animation ----------------------------------------
+   import ('../sass/03-utilities/_animations.scss')
       .then(this.animate);
-     }
+}
+
 
 
 save(){
        this.setState({placeholder : $('.editor textarea').text()});
  }
+
 
 
  animate(){
