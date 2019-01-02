@@ -44,11 +44,21 @@ const buttonTypes = {
   'fa fa-bold': '**',
   'fa fa-italic': '_',
   'fa fa-quote-left': '> ',
+  'fa fa-link': '[link]',
+  'fa fa-image': '![Alt Text]',
+  'fa fa-list-ol': '1. ',
+  'fa fa-list': '- ',
+  'fa fa-code': '`'
 };
 const buttonStyles = {
   'fa fa-bold': 'Strong Text',
   'fa fa-italic': 'Emphasized Text',
   'fa fa-quote-left': 'Block Quote',
+  'fa fa-link': '(http://)',
+  'fa fa-image': '(http://)',
+  'fa fa-list-ol': 'List Item',
+  'fa fa-list': 'List Item',
+  'fa fa-code': 'Inline Code'
 };
 
 
@@ -174,10 +184,14 @@ inserter(_stylePhrase, buttonType) {
 handleClick(e){
   let symbol = buttonTypes[e.target.className];
   let style = buttonStyles[e.target.className];
+
   let stylePhrase = e.target.className == 'fa fa-bold' ||
                       e.target.className == 'fa fa-italic' ||
                       e.target.className == 'fa fa-code' ?
-                      symbol+style+symbol : '\n' + symbol+style;
+                      symbol+style+symbol : '\n'+ symbol+style;
+  if(e.target.className == 'fa fa-link') {
+    stylePhrase = symbol+style;
+  }
   let userSelection = this.getSelectionText();
   var field = document.getElementById('textarea');
   let startPos = field.selectionStart;
@@ -249,6 +263,11 @@ save(){
           <i id="bold" onClick={this.handleClick} className='fa fa-bold'></i>
           <i id="italic" onClick={this.handleClick} className='fa fa-italic'></i>
           <i id="quote" onClick={this.handleClick} className='fa fa-quote-left'></i>
+          <i id="link" onClick={this.handleClick} className='fa fa-link'></i>
+          <i id="picture" onClick={this.handleClick} className='fa fa-image'></i>
+          <i  onClick={this.handleClick} className="fa fa-list"/>
+          <i  onClick={this.handleClick} className="fa fa-list-ol"/>
+          <i  onClick={this.handleClick} className="fa fa-code"/>
           <i id="theme-switch" class='fa-toggle-on' onClick={this.switchTheme}></i>
          </div>
         <div class="parent">
