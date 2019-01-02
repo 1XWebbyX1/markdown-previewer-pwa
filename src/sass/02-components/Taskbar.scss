@@ -12,9 +12,10 @@
   border-bottom: .5px solid black;
 
   >i {
+    padding: 5px 0;
     z-index: 99;
     margin-right: 5%;
-    font-size: calc(1em + 1vmax);
+    font-size: calc(0.9em + 1vmax);
     cursor: pointer;
     &:hover {
       transform: scale(1.2);
@@ -24,7 +25,7 @@
 #info {
   margin-top: -0.5%;
   margin-right: 5%;
-  font-size: calc(0.9em + 1vmax);
+  font-size: calc(0.8em + 1vmax);
   cursor: pointer;
   padding-top: 0.5%;
   z-index: 99;
