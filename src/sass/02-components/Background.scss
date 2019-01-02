@@ -31,6 +31,16 @@
     color: var(--textFont);
     border-bottom: .5px solid black;
 
+    >i {
+      z-index: 99;
+      margin-right: 5%;
+      font-size: calc(1.3em + 1vmax);
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
   #theme-switch {
     z-index: 99;
     margin-right: 5%;
@@ -50,6 +60,8 @@
       transform: scale(1.2);
     }
   }
+
+
 
   #info {
     margin-top: -0.5%;

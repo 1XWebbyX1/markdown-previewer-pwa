@@ -1,9 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 import asyncComponent from './asyncComponent/async'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faToggleOn, faInfoCircle, faSave, faArrowLeft  } from '@fortawesome/free-solid-svg-icons'
-
+import '@fortawesome/fontawesome-free/css/all.css'
 
 
 
@@ -41,6 +39,15 @@ var darkScheme;
 
 //---------------------------------------------------------------------------
 
+// GLOBAL VARS
+const buttonTypes = {
+  'fa fa-bold': '**',
+  'fa fa-italic': '_'
+};
+const buttonStyles = {
+  'fa fa-bold': 'Strong Text',
+  'fa fa-italic': 'Emphasized Text'
+};
 
 
 class Background extends React.Component {
@@ -49,12 +56,17 @@ class Background extends React.Component {
     super(props);
     this.state = {
       markdown: placeholder,
-      info: faInfoCircle,
-      placeholder: placeholder
+      placeholder: placeholder,
+      lastClicked: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.switchTheme = this.switchTheme.bind(this);
     this.toggleInfo = this.toggleInfo.bind(this);
+    this.insertAtCursor = this.insertAtCursor.bind(this);
+    this.setTextSelect = this.setTextSelect.bind(this);
+    this.getSelectionText = this.getSelectionText.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.inserter = this.inserter.bind(this);
     this.save = this.save.bind(this);
     this.animate = this.animate.bind(this);
     this.goEditorFullScreen = this.goEditorFullScreen.bind(this);
@@ -63,11 +75,13 @@ class Background extends React.Component {
     this.fullScreen = false;
     this.on = true;
     this.back = false;
+    this.undo = true;
   }
 
   //handle change of input in editor--------------
   handleChange(e){
     this.props.addText(e.target.value);
+    SSM.save('style', '');
   }
 
   //toggle info --------------
@@ -76,16 +90,8 @@ class Background extends React.Component {
        this.props.addText(info);
     }
     else this.props.addText(this.state.placeholder);
-
-    if(this.state.info === faArrowLeft){
-      this.setState({
-        info: faInfoCircle
-      })
-    }else{
-      this.setState({
-        info: faArrowLeft
-      })
-    }
+    $('#info').toggleClass('fa-info-circle');
+    $('#info').toggleClass('fa-arrow-left');
 }
 
   goEditorFullScreen(){
@@ -109,6 +115,86 @@ class Background extends React.Component {
      $('.preview').css('height', '49.8%');
    }
   }
+
+
+insertAtCursor(value){
+  var field = document.getElementById('textarea');
+  if(document.selection){ //older IE support
+    field.focus();
+    var selection = document.selection.createRange();
+    selection.text = value;
+  }else if(field.selectionStart || field.selectionStart == '0'){ //other browser support
+    let startPos = field.selectionStart;
+    SSM.save('position', startPos);
+    let endPos = field.selectionEnd;
+    let index = /[^`>*_\s-(1. )]/i.exec(value).index;
+    field.value = field.value.substring(0, startPos) + value + field.value.substring(endPos, field.value.length);
+    field.focus();
+    this.setTextSelect(startPos + index, startPos + value.length - index);
+  }else {
+    field.value += value;
+  }
+}
+
+
+setTextSelect(caretStart, caretEnd){
+  var field = document.getElementById('textarea');
+  if(caretStart == -1){
+    caretStart = SSM.get('position');
+    field.focus();
+    field.setSelectionRange(caretStart, caretStart);
+  }else if(field.selectionStart){
+    field.focus();
+    field.setSelectionRange(caretStart, caretEnd);
+  }else field.focus();
+}
+
+getSelectionText(){
+  let text = '';
+  var field = document.getElementById('textarea');
+  text = field.value.slice(field.selectionStart, field.selectionEnd);
+  return text;
+}
+
+inserter(_stylePhrase, buttonType) {
+    setTimeout( () => this.insertAtCursor(_stylePhrase), 100);
+    SSM.save('insert', _stylePhrase);
+    SSM.save('style', buttonType);
+    this.setState({lastClicked: 'insert'})
+  }
+
+handleClick(e){
+  let symbol = buttonTypes[e.target.className];
+  let style = buttonStyles[e.target.className];
+  let stylePhrase = symbol + style + symbol;
+  console.log(stylePhrase);
+  let userSelection = this.getSelectionText();
+  var field = document.getElementById('textarea');
+  let startPos = field.selectionStart;
+  let endPos = field.selectionEnd;
+  let lastStyle = SSM.get('style');
+  SSM.insertCaretStore(
+      startPos + symbol.length, endPos + symbol.length,
+      startPos, endPos
+    );
+
+    // INSERT / UNDO INSERT MARKUP TEMPLATE
+   if (this.state.lastClicked == 'insert' || this.state.lastClicked == 'undo insert') {
+     if (this.state.lastClicked == 'insert' && lastStyle == e.target.className) {
+       this.props.addText(field.value.replace(sessionStorage.getItem('insert'), ''));
+       console.log('here');
+       this.setState({
+          lastClicked: 'undo insert'
+        });
+       setTimeout( () => this.setTextSelect(-1, -1), 100);
+     } else {
+       console.log('inserter');
+       this.inserter(stylePhrase, e.target.className);
+     }
+  }else {
+   this.inserter(stylePhrase, e.target.className);
+ }
+}
 
 
   //handle switch for theme change ------------------
@@ -148,9 +234,11 @@ save(){
     return (
        <div class="back">
          <div id='taskbar'>
-          <FontAwesomeIcon id="save" icon={faSave} onClick={this.save} />
-          <FontAwesomeIcon id="info" onClick={this.toggleInfo} icon={this.state.info} />
-          <FontAwesomeIcon id="theme-switch" icon={faToggleOn} onClick={this.switchTheme} />
+          <i id="save" class='fa fa-save' onClick={this.save}></i>
+          <i id="info" onClick={this.toggleInfo} class='fa fa-info-circle'></i>
+          <i id="bold" onClick={this.handleClick} className='fa fa-bold'></i>
+          <i id="italic" onClick={this.handleClick} className='fa fa-italic'></i>
+          <i id="theme-switch" class='fa-toggle-on' onClick={this.switchTheme}></i>
          </div>
         <div class="parent">
          <Editor markdown={this.props.markdown} onChange={this.handleChange} onClick={this.goEditorFullScreen}/>
@@ -160,6 +248,32 @@ save(){
     );
   }
 };
+
+
+class SessionStorageManager {
+  insertCaretStore(p1, p2, p3, p4){
+    this.p1 = sessionStorage.setItem('startPos', p1);
+    this.p2 = sessionStorage.setItem('endPos', p2);
+    this.p3 = sessionStorage.setItem('undoStart', p3);
+    this.p4 = sessionStorage.setItem('undoEnd', p4);
+  }
+
+  selectionCaretStore(p12, p13, p14){
+    this.p12 = sessionStorage.setItem('style', p12);
+    this.p13 = sessionStorage.setItem('lastStartPos', p13);
+    this.p14 = sessionStorage.setItem('lastSelection', p14);
+  }
+
+  save(key, item){
+    sessionStorage.setItem(key, item);
+  }
+
+  get(key){
+    return sessionStorage.getItem(key);
+  }
+}
+const SSM = new SessionStorageManager();
+
 
 
 export default Background;
