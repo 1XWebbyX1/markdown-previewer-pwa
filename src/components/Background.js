@@ -42,11 +42,13 @@ var darkScheme;
 // GLOBAL VARS
 const buttonTypes = {
   'fa fa-bold': '**',
-  'fa fa-italic': '_'
+  'fa fa-italic': '_',
+  'fa fa-quote-left': '> ',
 };
 const buttonStyles = {
   'fa fa-bold': 'Strong Text',
-  'fa fa-italic': 'Emphasized Text'
+  'fa fa-italic': 'Emphasized Text',
+  'fa fa-quote-left': 'Block Quote',
 };
 
 
@@ -172,7 +174,10 @@ inserter(_stylePhrase, buttonType) {
 handleClick(e){
   let symbol = buttonTypes[e.target.className];
   let style = buttonStyles[e.target.className];
-  let stylePhrase = symbol + style + symbol;
+  let stylePhrase = e.target.className == 'fa fa-bold' ||
+                      e.target.className == 'fa fa-italic' ||
+                      e.target.className == 'fa fa-code' ?
+                      symbol+style+symbol : '\n' + symbol+style;
   let userSelection = this.getSelectionText();
   var field = document.getElementById('textarea');
   let startPos = field.selectionStart;
@@ -243,6 +248,7 @@ save(){
           <i id="info" onClick={this.toggleInfo} class='fa fa-info-circle'></i>
           <i id="bold" onClick={this.handleClick} className='fa fa-bold'></i>
           <i id="italic" onClick={this.handleClick} className='fa fa-italic'></i>
+          <i id="quote" onClick={this.handleClick} className='fa fa-quote-left'></i>
           <i id="theme-switch" class='fa-toggle-on' onClick={this.switchTheme}></i>
          </div>
         <div class="parent">
