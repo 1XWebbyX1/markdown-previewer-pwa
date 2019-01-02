@@ -158,7 +158,13 @@ getSelectionText(){
 
 inserter(_stylePhrase, buttonType) {
     setTimeout( () => this.insertAtCursor(_stylePhrase), 100);
-    SSM.save('insert', _stylePhrase);
+    if(SSM.get('insert')){
+      SSM.clear('insert');
+      SSM.save('insert', _stylePhrase);
+    }
+    else{
+      SSM.save('insert', _stylePhrase);
+    }
     SSM.save('style', buttonType);
     this.setState({lastClicked: 'insert'})
   }
@@ -167,12 +173,12 @@ handleClick(e){
   let symbol = buttonTypes[e.target.className];
   let style = buttonStyles[e.target.className];
   let stylePhrase = symbol + style + symbol;
-  console.log(stylePhrase);
   let userSelection = this.getSelectionText();
   var field = document.getElementById('textarea');
   let startPos = field.selectionStart;
   let endPos = field.selectionEnd;
   let lastStyle = SSM.get('style');
+
   SSM.insertCaretStore(
       startPos + symbol.length, endPos + symbol.length,
       startPos, endPos
@@ -181,17 +187,16 @@ handleClick(e){
     // INSERT / UNDO INSERT MARKUP TEMPLATE
    if (this.state.lastClicked == 'insert' || this.state.lastClicked == 'undo insert') {
      if (this.state.lastClicked == 'insert' && lastStyle == e.target.className) {
-       this.props.addText(field.value.replace(sessionStorage.getItem('insert'), ''));
-       console.log('here');
+       var value = field.value.substring(0, startPos - SSM.get('insert').length) + field.value.substring(startPos - SSM.get('insert').length).replace(SSM.get('insert'), '');
+       this.props.addText(value);
        this.setState({
           lastClicked: 'undo insert'
         });
-       setTimeout( () => this.setTextSelect(-1, -1), 100);
+       setTimeout( () => this.setTextSelect(-1, -1), 100); //update the caret position
      } else {
-       console.log('inserter');
        this.inserter(stylePhrase, e.target.className);
      }
-  }else {
+  }else { //to insert the first time
    this.inserter(stylePhrase, e.target.className);
  }
 }
@@ -251,6 +256,7 @@ save(){
 
 
 class SessionStorageManager {
+
   insertCaretStore(p1, p2, p3, p4){
     this.p1 = sessionStorage.setItem('startPos', p1);
     this.p2 = sessionStorage.setItem('endPos', p2);
@@ -271,7 +277,12 @@ class SessionStorageManager {
   get(key){
     return sessionStorage.getItem(key);
   }
+
+  clear(key){
+    sessionStorage.removeItem(key);
+  }
 }
+
 const SSM = new SessionStorageManager();
 
 
