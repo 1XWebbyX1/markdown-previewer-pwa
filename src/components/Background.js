@@ -1,11 +1,9 @@
 import React from 'react'
 import $ from 'jquery'
 import asyncComponent from './asyncComponent/async'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faToggleOn, faInfoCircle, faSave, faArrowLeft  } from '@fortawesome/free-solid-svg-icons'
+import SessionStorageManager from './sessionStorageManager'
 
-
-
+const SSM = new SessionStorageManager();
 
 //async imports -____________________________________________________________
 const Editor = asyncComponent(() =>
@@ -15,6 +13,10 @@ const Editor = asyncComponent(() =>
 const Preview = asyncComponent(() =>
        import('./Previewer').then(module => module.default)
        );
+
+const Taskbar = asyncComponent(() =>
+      import('./Taskbar').then(module => module.default)
+      );
 
 var placeholder;
  import('../data/strings')
@@ -41,6 +43,27 @@ var darkScheme;
 
 //---------------------------------------------------------------------------
 
+// GLOBAL VARS
+const buttonTypes = {
+  'fa fa-bold': '**',
+  'fa fa-italic': '_',
+  'fa fa-quote-left': '> ',
+  'fa fa-link': '[link]',
+  'fa fa-image': '![Alt Text]',
+  'fa fa-list-ol': '1. ',
+  'fa fa-list': '- ',
+  'fa fa-code': '`'
+};
+const buttonStyles = {
+  'fa fa-bold': 'Strong Text',
+  'fa fa-italic': 'Emphasized Text',
+  'fa fa-quote-left': 'Block Quote',
+  'fa fa-link': '(http://)',
+  'fa fa-image': '(http://)',
+  'fa fa-list-ol': 'List Item',
+  'fa fa-list': 'List Item',
+  'fa fa-code': 'Inline Code'
+};
 
 
 class Background extends React.Component {
@@ -49,12 +72,17 @@ class Background extends React.Component {
     super(props);
     this.state = {
       markdown: placeholder,
-      info: faInfoCircle,
-      placeholder: placeholder
+      placeholder: placeholder,
+      lastClicked: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.switchTheme = this.switchTheme.bind(this);
     this.toggleInfo = this.toggleInfo.bind(this);
+    this.insertAtCursor = this.insertAtCursor.bind(this);
+    this.setTextSelect = this.setTextSelect.bind(this);
+    this.getSelectionText = this.getSelectionText.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.inserter = this.inserter.bind(this);
     this.save = this.save.bind(this);
     this.animate = this.animate.bind(this);
     this.goEditorFullScreen = this.goEditorFullScreen.bind(this);
@@ -63,11 +91,13 @@ class Background extends React.Component {
     this.fullScreen = false;
     this.on = true;
     this.back = false;
+    this.undo = true;
   }
 
   //handle change of input in editor--------------
   handleChange(e){
     this.props.addText(e.target.value);
+    SSM.save('style', '');
   }
 
   //toggle info --------------
@@ -76,16 +106,8 @@ class Background extends React.Component {
        this.props.addText(info);
     }
     else this.props.addText(this.state.placeholder);
-
-    if(this.state.info === faArrowLeft){
-      this.setState({
-        info: faInfoCircle
-      })
-    }else{
-      this.setState({
-        info: faArrowLeft
-      })
-    }
+    $('#info').toggleClass('fa-info-circle');
+    $('#info').toggleClass('fa-arrow-left');
 }
 
   goEditorFullScreen(){
@@ -109,6 +131,96 @@ class Background extends React.Component {
      $('.preview').css('height', '49.8%');
    }
   }
+
+
+insertAtCursor(value){
+  var field = document.getElementById('textarea');
+  if(document.selection){ //older IE support
+    field.focus({preventScroll:true});
+    var selection = document.selection.createRange();
+    selection.text = value;
+  }else if(field.selectionStart || field.selectionStart == '0'){ //other browser support
+    let startPos = field.selectionStart;
+    SSM.save('position', startPos);
+    let endPos = field.selectionEnd;
+    let index = /[^`>*_\s-(1. )]/i.exec(value).index;
+    field.value = field.value.substring(0, startPos) + value + field.value.substring(endPos, field.value.length);
+    field.focus({preventScroll:true});
+    this.setTextSelect(startPos + index, startPos + value.length - index);
+  }else {
+    field.value += value;
+  }
+}
+
+
+setTextSelect(caretStart, caretEnd){
+  var field = document.getElementById('textarea');
+  if(caretStart == -1){
+    caretStart = SSM.get('position');
+    field.setSelectionRange(caretStart, caretStart);
+  }else if(field.selectionStart){
+    field.setSelectionRange(caretStart, caretEnd);
+  }
+}
+
+getSelectionText(){
+  let text = '';
+  var field = document.getElementById('textarea');
+  text = field.value.slice(field.selectionStart, field.selectionEnd);
+  return text;
+}
+
+inserter(_stylePhrase, buttonType) {
+    setTimeout( () => this.insertAtCursor(_stylePhrase), 100);
+    if(SSM.get('insert')){
+      SSM.clear('insert');
+      SSM.save('insert', _stylePhrase);
+    }
+    else{
+      SSM.save('insert', _stylePhrase);
+    }
+    SSM.save('style', buttonType);
+    this.setState({lastClicked: 'insert'})
+  }
+
+handleClick(e){
+  let symbol = buttonTypes[e.target.className];
+  let style = buttonStyles[e.target.className];
+
+  let stylePhrase = e.target.className == 'fa fa-bold' ||
+                      e.target.className == 'fa fa-italic' ||
+                      e.target.className == 'fa fa-code' ?
+                      symbol+style+symbol : '\n'+ symbol+style;
+  if(e.target.className == 'fa fa-link') {
+    stylePhrase = symbol+style;
+  }
+  let userSelection = this.getSelectionText();
+  var field = document.getElementById('textarea');
+  let startPos = field.selectionStart;
+  let endPos = field.selectionEnd;
+  let lastStyle = SSM.get('style');
+
+  SSM.insertCaretStore(
+      startPos + symbol.length, endPos + symbol.length,
+      startPos, endPos
+    );
+
+    // INSERT / UNDO INSERT 
+   if (this.state.lastClicked == 'insert' || this.state.lastClicked == 'undo insert') {
+     if (this.state.lastClicked == 'insert' && lastStyle == e.target.className) {
+       var value = field.value.substring(0, startPos - SSM.get('insert').length) + field.value.substring(startPos - SSM.get('insert').length).replace(SSM.get('insert'), '');
+       this.props.addText(value);
+       this.setState({
+          lastClicked: 'undo insert'
+        });
+       setTimeout( () => this.setTextSelect(-1, -1), 0); //update the caret position
+     } else {
+       this.inserter(stylePhrase, e.target.className);
+     }
+  }else { //to insert the first time
+   this.inserter(stylePhrase, e.target.className);
+ }
+}
 
 
   //handle switch for theme change ------------------
@@ -147,11 +259,7 @@ save(){
   render() {
     return (
        <div class="back">
-         <div id='taskbar'>
-          <FontAwesomeIcon id="save" icon={faSave} onClick={this.save} />
-          <FontAwesomeIcon id="info" onClick={this.toggleInfo} icon={this.state.info} />
-          <FontAwesomeIcon id="theme-switch" icon={faToggleOn} onClick={this.switchTheme} />
-         </div>
+         <Taskbar onClick={this.handleClick} toggleInfo={this.toggleInfo} switchTheme={this.switchTheme} save={this.save} />
         <div class="parent">
          <Editor markdown={this.props.markdown} onChange={this.handleChange} onClick={this.goEditorFullScreen}/>
          <Preview markdown={this.props.markdown} onClick={this.goPreviewFullScreen}/>
@@ -160,6 +268,7 @@ save(){
     );
   }
 };
+
 
 
 export default Background;

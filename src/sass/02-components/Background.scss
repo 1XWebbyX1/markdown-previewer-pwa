@@ -19,52 +19,7 @@
   background-image: var(--back);
   transition: background-image 1s;
 
-  #taskbar{
-    position: fixed;
-    height: 50px;
-    width: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background: var(--toolbar);
-    color: var(--textFont);
-    border-bottom: .5px solid black;
-
-  #theme-switch {
-    z-index: 99;
-    margin-right: 5%;
-    font-size: calc(1.3em + 1vmax);
-    cursor: pointer;
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  #save {
-    z-index: 99;
-    margin-right: 5%;
-    font-size: calc(1.3em + 1vmax);
-    cursor: pointer;
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  #info {
-    margin-top: -0.5%;
-    margin-right: 5%;
-    font-size: calc(1.2em + 1vmax);
-    cursor: pointer;
-    padding-top: 0.5%;
-    z-index: 99;
-
-    &:hover {
-      transform: scale(1.2);
-      color: #0073e6;
-    }
-  }
-}
+  
 
   .parent{
     display: flex;
