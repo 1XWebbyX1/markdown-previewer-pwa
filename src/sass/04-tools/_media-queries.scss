@@ -29,6 +29,7 @@
       align-items: center;
       justify-content: space-between;
       .arrows{
+        display: inline-block;
         padding-right: 4%;
       }
       h3 {
@@ -57,6 +58,7 @@
       align-items: center;
       justify-content: space-between;
       .arrows{
+        display: inline-block;
         padding-right: 4%;
       }
       h3 {
@@ -66,12 +68,10 @@
         text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
       }
     }
-
   }
+}
 
-
-
-  body .back #theme-switch {
+/*  body .back #theme-switch {
     top: 10px;
     left: 82%;
     font-size: 3vmax;
@@ -96,4 +96,4 @@
     left: 88%;
   }
 
-}
+}*/

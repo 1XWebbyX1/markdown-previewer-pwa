@@ -1,9 +1,9 @@
 import React from 'react'
 import $ from 'jquery'
 import asyncComponent from './asyncComponent/async'
-import '@fortawesome/fontawesome-free/css/all.css'
+import SessionStorageManager from './sessionStorageManager'
 
-
+const SSM = new SessionStorageManager();
 
 //async imports -____________________________________________________________
 const Editor = asyncComponent(() =>
@@ -13,6 +13,10 @@ const Editor = asyncComponent(() =>
 const Preview = asyncComponent(() =>
        import('./Previewer').then(module => module.default)
        );
+
+const Taskbar = asyncComponent(() =>
+      import('./Taskbar').then(module => module.default)
+      );
 
 var placeholder;
  import('../data/strings')
@@ -132,7 +136,7 @@ class Background extends React.Component {
 insertAtCursor(value){
   var field = document.getElementById('textarea');
   if(document.selection){ //older IE support
-    field.focus();
+    field.focus({preventScroll:true});
     var selection = document.selection.createRange();
     selection.text = value;
   }else if(field.selectionStart || field.selectionStart == '0'){ //other browser support
@@ -141,7 +145,7 @@ insertAtCursor(value){
     let endPos = field.selectionEnd;
     let index = /[^`>*_\s-(1. )]/i.exec(value).index;
     field.value = field.value.substring(0, startPos) + value + field.value.substring(endPos, field.value.length);
-    field.focus();
+    field.focus({preventScroll:true});
     this.setTextSelect(startPos + index, startPos + value.length - index);
   }else {
     field.value += value;
@@ -153,12 +157,10 @@ setTextSelect(caretStart, caretEnd){
   var field = document.getElementById('textarea');
   if(caretStart == -1){
     caretStart = SSM.get('position');
-    field.focus();
     field.setSelectionRange(caretStart, caretStart);
   }else if(field.selectionStart){
-    field.focus();
     field.setSelectionRange(caretStart, caretEnd);
-  }else field.focus();
+  }
 }
 
 getSelectionText(){
@@ -203,7 +205,7 @@ handleClick(e){
       startPos, endPos
     );
 
-    // INSERT / UNDO INSERT MARKUP TEMPLATE
+    // INSERT / UNDO INSERT 
    if (this.state.lastClicked == 'insert' || this.state.lastClicked == 'undo insert') {
      if (this.state.lastClicked == 'insert' && lastStyle == e.target.className) {
        var value = field.value.substring(0, startPos - SSM.get('insert').length) + field.value.substring(startPos - SSM.get('insert').length).replace(SSM.get('insert'), '');
@@ -211,7 +213,7 @@ handleClick(e){
        this.setState({
           lastClicked: 'undo insert'
         });
-       setTimeout( () => this.setTextSelect(-1, -1), 100); //update the caret position
+       setTimeout( () => this.setTextSelect(-1, -1), 0); //update the caret position
      } else {
        this.inserter(stylePhrase, e.target.className);
      }
@@ -257,19 +259,7 @@ save(){
   render() {
     return (
        <div class="back">
-         <div id='taskbar'>
-          <i id="save" class='fa fa-save' onClick={this.save}></i>
-          <i id="info" onClick={this.toggleInfo} class='fa fa-info-circle'></i>
-          <i id="bold" onClick={this.handleClick} className='fa fa-bold'></i>
-          <i id="italic" onClick={this.handleClick} className='fa fa-italic'></i>
-          <i id="quote" onClick={this.handleClick} className='fa fa-quote-left'></i>
-          <i id="link" onClick={this.handleClick} className='fa fa-link'></i>
-          <i id="picture" onClick={this.handleClick} className='fa fa-image'></i>
-          <i  onClick={this.handleClick} className="fa fa-list"/>
-          <i  onClick={this.handleClick} className="fa fa-list-ol"/>
-          <i  onClick={this.handleClick} className="fa fa-code"/>
-          <i id="theme-switch" class='fa-toggle-on' onClick={this.switchTheme}></i>
-         </div>
+         <Taskbar onClick={this.handleClick} toggleInfo={this.toggleInfo} switchTheme={this.switchTheme} save={this.save} />
         <div class="parent">
          <Editor markdown={this.props.markdown} onChange={this.handleChange} onClick={this.goEditorFullScreen}/>
          <Preview markdown={this.props.markdown} onClick={this.goPreviewFullScreen}/>
@@ -278,37 +268,6 @@ save(){
     );
   }
 };
-
-
-class SessionStorageManager {
-
-  insertCaretStore(p1, p2, p3, p4){
-    this.p1 = sessionStorage.setItem('startPos', p1);
-    this.p2 = sessionStorage.setItem('endPos', p2);
-    this.p3 = sessionStorage.setItem('undoStart', p3);
-    this.p4 = sessionStorage.setItem('undoEnd', p4);
-  }
-
-  selectionCaretStore(p12, p13, p14){
-    this.p12 = sessionStorage.setItem('style', p12);
-    this.p13 = sessionStorage.setItem('lastStartPos', p13);
-    this.p14 = sessionStorage.setItem('lastSelection', p14);
-  }
-
-  save(key, item){
-    sessionStorage.setItem(key, item);
-  }
-
-  get(key){
-    return sessionStorage.getItem(key);
-  }
-
-  clear(key){
-    sessionStorage.removeItem(key);
-  }
-}
-
-const SSM = new SessionStorageManager();
 
 
 
