@@ -43,7 +43,7 @@ var darkScheme;
 
 //---------------------------------------------------------------------------
 
-// GLOBAL VARS
+// TASKBAR buttons vars
 const buttonTypes = {
   'fa fa-bold': '**',
   'fa fa-italic': '_',
@@ -139,7 +139,7 @@ insertAtCursor(value){
     field.focus({preventScroll:true});
     var selection = document.selection.createRange();
     selection.text = value;
-  }else if(field.selectionStart || field.selectionStart == '0'){ //other browser support
+  }else if(field.selectionStart || field.selectionStart == '0'){ //other browsers
     let startPos = field.selectionStart;
     SSM.save('position', startPos);
     let endPos = field.selectionEnd;
@@ -205,7 +205,7 @@ handleClick(e){
       startPos, endPos
     );
 
-    // INSERT / UNDO INSERT 
+    // INSERT / UNDO INSERT
    if (this.state.lastClicked == 'insert' || this.state.lastClicked == 'undo insert') {
      if (this.state.lastClicked == 'insert' && lastStyle == e.target.className) {
        var value = field.value.substring(0, startPos - SSM.get('insert').length) + field.value.substring(startPos - SSM.get('insert').length).replace(SSM.get('insert'), '');

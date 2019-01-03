@@ -1,10 +1,10 @@
 # Markdown Previewer
 A Markdown Previewer web app bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![screenshot](https://i.ibb.co/tzHM9Zs/2011965-Krqy-BM-small-42d76ca2-9d5e-41e9-b464-b5a19a9e7944-1.png)
+![screenshot](https://i.ibb.co/gWzNCRK/Screen-Shot-2019-01-03-at-14-52-08.png)
 
-# Demo
-For a live demo, visit [codepen](https://codepen.io/1xwebbyx1/full/KrqyBM) or [github](https://1xwebbyx1.github.io/markdown-previewer-pwa/).
+# Visit
+For web version, visit [github](https://1xwebbyx1.github.io/markdown-previewer-pwa/).
 
 # Technologies
 Project is created with :
@@ -14,7 +14,12 @@ Project is created with :
 - Redux: 4.0
 - Marked: 0.5
 
-# How To Use
+# Key features
+- Live markdown preview
+- Toolbar for markdown formatting
+- Dark and Light Theme
+
+# Install
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
@@ -34,7 +39,7 @@ $ npm start
 You will then be able to access it at localhost:3000
 
 
-For production to optimized build folder run :
+For optimized build folder production run :
 ```
 $ npm run build
 ```
@@ -42,19 +47,22 @@ You will then be able to access it at localhost:5000
 
 Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
+# You may also like
+- [Pomodoro Clock](https://github.com/1XWebbyX1/pomodoro-clock-pwa)
+- [Drum Machine](https://github.com/1XWebbyX1/electric-drums-pwa)
 
 # Inspiration
 
-This Project was inspired by  suggested  user stories  at [freeCodeCamp](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-markdown-previewer).
+This Project was inspired by(not entirely based on)  suggested  user stories  at [freeCodeCamp](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-markdown-previewer).
 
 # ToDo
 
 - Implement PWA features
-- Implement save state
+- Export Function
 
 # License
 
-All Rights Reserved
+MIT
 
 ---
 
