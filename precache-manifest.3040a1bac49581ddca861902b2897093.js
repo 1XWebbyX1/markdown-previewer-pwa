@@ -16,12 +16,12 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/js/2.8fdf5602.chunk.js"
   },
   {
-    "revision": "a22d64d5e942a7cc7b28",
-    "url": "/markdown-previewer-pwa/static/css/main.d585ee9b.chunk.css"
+    "revision": "b848af07d2c25ed2dbf3",
+    "url": "/markdown-previewer-pwa/static/css/main.ab311e06.chunk.css"
   },
   {
-    "revision": "a22d64d5e942a7cc7b28",
-    "url": "/markdown-previewer-pwa/static/js/main.a22d64d5.chunk.js"
+    "revision": "b848af07d2c25ed2dbf3",
+    "url": "/markdown-previewer-pwa/static/js/main.b848af07.chunk.js"
   },
   {
     "revision": "bee83a63821ae59dc359",
@@ -124,7 +124,7 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/media/fa-solid-900.27603739.svg"
   },
   {
-    "revision": "4c243f3c23612d07839631364731a43f",
+    "revision": "5f028d44e67eb41a953900bc9adc1ae7",
     "url": "/markdown-previewer-pwa/index.html"
   }
 ];
