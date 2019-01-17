@@ -16,16 +16,16 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/js/2.8fdf5602.chunk.js"
   },
   {
-    "revision": "cfe44152db8e614a8984",
-    "url": "/markdown-previewer-pwa/static/css/main.0ef81b90.chunk.css"
+    "revision": "ddf2dd2a58b02de37675",
+    "url": "/markdown-previewer-pwa/static/css/main.b616e578.chunk.css"
   },
   {
-    "revision": "cfe44152db8e614a8984",
-    "url": "/markdown-previewer-pwa/static/js/main.cfe44152.chunk.js"
+    "revision": "ddf2dd2a58b02de37675",
+    "url": "/markdown-previewer-pwa/static/js/main.ddf2dd2a.chunk.js"
   },
   {
-    "revision": "421c7516b01d7a35a143",
-    "url": "/markdown-previewer-pwa/static/js/4.421c7516.chunk.js"
+    "revision": "bee83a63821ae59dc359",
+    "url": "/markdown-previewer-pwa/static/js/4.bee83a63.chunk.js"
   },
   {
     "revision": "ff2af0e7e400b59d3881",
@@ -60,8 +60,8 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/js/11.3497e133.chunk.js"
   },
   {
-    "revision": "7b0ed68ffc7131f38611",
-    "url": "/markdown-previewer-pwa/static/js/runtime~main.7b0ed68f.js"
+    "revision": "121769ecf86434d2ed3a",
+    "url": "/markdown-previewer-pwa/static/js/runtime~main.121769ec.js"
   },
   {
     "revision": "e65d96d04378217b8b5caff2fb1b62cb",
@@ -96,24 +96,24 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/media/fa-solid-900.52b8345b.woff"
   },
   {
-    "revision": "7d43b9ae0b8bb1d0dc425d78dc577b0a",
-    "url": "/markdown-previewer-pwa/static/media/fa-brands-400.7d43b9ae.eot"
-  },
-  {
     "revision": "50a544b5ad4d512e8db3cdc089823a00",
     "url": "/markdown-previewer-pwa/static/media/fa-brands-400.50a544b5.ttf"
+  },
+  {
+    "revision": "7d43b9ae0b8bb1d0dc425d78dc577b0a",
+    "url": "/markdown-previewer-pwa/static/media/fa-brands-400.7d43b9ae.eot"
   },
   {
     "revision": "734248d027cbaac7f03c0d931ec95593",
     "url": "/markdown-previewer-pwa/static/media/fa-regular-400.734248d0.svg"
   },
   {
-    "revision": "f72d546abcc27880adf8428792c72519",
-    "url": "/markdown-previewer-pwa/static/media/fa-solid-900.f72d546a.eot"
-  },
-  {
     "revision": "1709a2810c3752483683f3f7d287aa89",
     "url": "/markdown-previewer-pwa/static/media/fa-solid-900.1709a281.ttf"
+  },
+  {
+    "revision": "f72d546abcc27880adf8428792c72519",
+    "url": "/markdown-previewer-pwa/static/media/fa-solid-900.f72d546a.eot"
   },
   {
     "revision": "fef43c1fd872ef7f1880483d9b63ccf2",
@@ -124,7 +124,7 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/media/fa-solid-900.27603739.svg"
   },
   {
-    "revision": "1ca69069eba12b0363f18852c44a2ff2",
+    "revision": "95808f9eb8a28acfb310049323cc2739",
     "url": "/markdown-previewer-pwa/index.html"
   }
 ];
