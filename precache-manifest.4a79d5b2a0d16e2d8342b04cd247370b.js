@@ -1,35 +1,35 @@
 self.__precacheManifest = [
   {
-    "revision": "803c6b5a0b66bbed6198",
-    "url": "/markdown-previewer-pwa/static/css/main.8803cceb.chunk.css"
+    "revision": "f5ec4ff509ab48def114",
+    "url": "/markdown-previewer-pwa/static/css/main.9bcab3b2.chunk.css"
   },
   {
-    "revision": "803c6b5a0b66bbed6198",
-    "url": "/markdown-previewer-pwa/static/js/main.803c6b5a.chunk.js"
+    "revision": "f5ec4ff509ab48def114",
+    "url": "/markdown-previewer-pwa/static/js/main.f5ec4ff5.chunk.js"
   },
   {
-    "revision": "6221241eab8b4b550875",
-    "url": "/markdown-previewer-pwa/static/js/1.6221241e.chunk.js"
+    "revision": "2f4f86ba603c08d7168f",
+    "url": "/markdown-previewer-pwa/static/js/1.2f4f86ba.chunk.js"
   },
   {
-    "revision": "4a6d4deb6ecde34e2c17",
-    "url": "/markdown-previewer-pwa/static/css/2.aa292dc2.chunk.css"
+    "revision": "34a3a9e03e0bdcf9c114",
+    "url": "/markdown-previewer-pwa/static/css/2.872467c7.chunk.css"
   },
   {
-    "revision": "4a6d4deb6ecde34e2c17",
-    "url": "/markdown-previewer-pwa/static/js/2.4a6d4deb.chunk.js"
+    "revision": "34a3a9e03e0bdcf9c114",
+    "url": "/markdown-previewer-pwa/static/js/2.34a3a9e0.chunk.js"
   },
   {
-    "revision": "25fbceda859504f171a4",
-    "url": "/markdown-previewer-pwa/static/css/3.78dcc3e8.chunk.css"
+    "revision": "bbacbdf0cd9671de047c",
+    "url": "/markdown-previewer-pwa/static/css/3.9a9381b0.chunk.css"
   },
   {
-    "revision": "25fbceda859504f171a4",
-    "url": "/markdown-previewer-pwa/static/js/3.25fbceda.chunk.js"
+    "revision": "bbacbdf0cd9671de047c",
+    "url": "/markdown-previewer-pwa/static/js/3.bbacbdf0.chunk.js"
   },
   {
-    "revision": "c5ed2e53966d33a56ad4",
-    "url": "/markdown-previewer-pwa/static/js/runtime~main.c5ed2e53.js"
+    "revision": "ecfaec2006450c5aa83f",
+    "url": "/markdown-previewer-pwa/static/js/runtime~main.ecfaec20.js"
   },
   {
     "revision": "e65d96d04378217b8b5caff2fb1b62cb",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/media/fa-solid-900.27603739.svg"
   },
   {
-    "revision": "9d048cfb7c7c23d38c75aa5354e9b257",
+    "revision": "8a8c95dd163182c4c4146b984216419e",
     "url": "/markdown-previewer-pwa/index.html"
   }
 ];
