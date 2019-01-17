@@ -16,12 +16,12 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/js/2.8fdf5602.chunk.js"
   },
   {
-    "revision": "ddf2dd2a58b02de37675",
-    "url": "/markdown-previewer-pwa/static/css/main.b616e578.chunk.css"
+    "revision": "beb233051991d505214d",
+    "url": "/markdown-previewer-pwa/static/css/main.10e605ee.chunk.css"
   },
   {
-    "revision": "ddf2dd2a58b02de37675",
-    "url": "/markdown-previewer-pwa/static/js/main.ddf2dd2a.chunk.js"
+    "revision": "beb233051991d505214d",
+    "url": "/markdown-previewer-pwa/static/js/main.beb23305.chunk.js"
   },
   {
     "revision": "bee83a63821ae59dc359",
@@ -96,24 +96,24 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/media/fa-solid-900.52b8345b.woff"
   },
   {
-    "revision": "50a544b5ad4d512e8db3cdc089823a00",
-    "url": "/markdown-previewer-pwa/static/media/fa-brands-400.50a544b5.ttf"
-  },
-  {
     "revision": "7d43b9ae0b8bb1d0dc425d78dc577b0a",
     "url": "/markdown-previewer-pwa/static/media/fa-brands-400.7d43b9ae.eot"
+  },
+  {
+    "revision": "50a544b5ad4d512e8db3cdc089823a00",
+    "url": "/markdown-previewer-pwa/static/media/fa-brands-400.50a544b5.ttf"
   },
   {
     "revision": "734248d027cbaac7f03c0d931ec95593",
     "url": "/markdown-previewer-pwa/static/media/fa-regular-400.734248d0.svg"
   },
   {
-    "revision": "1709a2810c3752483683f3f7d287aa89",
-    "url": "/markdown-previewer-pwa/static/media/fa-solid-900.1709a281.ttf"
-  },
-  {
     "revision": "f72d546abcc27880adf8428792c72519",
     "url": "/markdown-previewer-pwa/static/media/fa-solid-900.f72d546a.eot"
+  },
+  {
+    "revision": "1709a2810c3752483683f3f7d287aa89",
+    "url": "/markdown-previewer-pwa/static/media/fa-solid-900.1709a281.ttf"
   },
   {
     "revision": "fef43c1fd872ef7f1880483d9b63ccf2",
@@ -124,7 +124,7 @@ self.__precacheManifest = [
     "url": "/markdown-previewer-pwa/static/media/fa-solid-900.27603739.svg"
   },
   {
-    "revision": "95808f9eb8a28acfb310049323cc2739",
+    "revision": "f0a2daa85ebfa063f685527fd3b039d5",
     "url": "/markdown-previewer-pwa/index.html"
   }
 ];
