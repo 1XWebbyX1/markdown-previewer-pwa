@@ -63,6 +63,6 @@ Here is a tip--
 ♥ You can switch the theme using the toggle button at the top right corner of the screen ♥
 
 
-Important Note: The state will be saved until editor is reloaded. 
+Important Note: The state will be saved until editor is reloaded.
 
 `;

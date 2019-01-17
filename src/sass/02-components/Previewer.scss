@@ -1,7 +1,10 @@
 
 .preview {
   overflow: scroll;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
   margin: 0 0.2%;
+  padding-right: 0.2%;
   margin-top: 100px;
   margin-left: 0;
   width: 49.8%;
@@ -10,6 +13,7 @@
   background: var(--textArea);
 
   #view {
+    display: block;
     padding: 5%;
     padding-right: 0;
     margin-top: 5%;
@@ -28,6 +32,7 @@
 
 code {
   background: white;
+  overflow-wrap: break-word;
   color: #e60099;
   padding: 1px 4px 2px 4px;
 }

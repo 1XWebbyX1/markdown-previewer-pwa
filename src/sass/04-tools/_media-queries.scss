@@ -6,10 +6,12 @@
   }
   body .back {
     width: 100vw;
-    &:focus-within {min-height: 1000px !important;}
+    height: 100vh;
     .parent{
       flex-direction: column;
       justify-content: flex-start;
+      height: 99vh;
+      &:focus-within {min-height: 1000px !important;}
     }
   }
 
@@ -17,10 +19,10 @@
     margin-top: 12%;
     overflow-x: hidden;
     width: 100%!important;
-    height: 49.5%;
+    height: 50%;
     textarea:focus-within {
-      height: 1000px !important;
-      font-size: 3.5vmax !important;
+      height: 50% !important;
+      font-size: 4vw !important;
     }
 
     .toolbar{
@@ -35,7 +37,7 @@
       h3 {
         padding: 5%;
         padding-right: 0;
-        font-size: 2.7vmax;
+        font-size: 4.7vw;
         text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
       }
     }
@@ -45,7 +47,7 @@
     margin-top: 0.5%;
     overflow-x: hidden;
     width: 100%!important;
-    height: 49.8%;
+    height: 50%;
     code{
       width: 50%;
       height: auto;
@@ -64,7 +66,7 @@
       h3 {
         padding: 5%;
         padding-right: 0;
-        font-size: 2.7vmax;
+        font-size: 4.7vw;
         text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
       }
     }
