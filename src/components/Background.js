@@ -1,45 +1,31 @@
 import React from 'react'
 import $ from 'jquery'
-import asyncComponent from './asyncComponent/async'
 import SessionStorageManager from './sessionStorageManager'
+import Editor from './Editor'
+import Preview from './Previewer'
+import Taskbar from './Taskbar'
 
 const SSM = new SessionStorageManager();
 
-//async imports -____________________________________________________________
-const Editor = asyncComponent(() =>
-        import('./Editor').then(module => module.default)
-        );
-
-const Preview = asyncComponent(() =>
-       import('./Previewer').then(module => module.default)
-       );
-
-const Taskbar = asyncComponent(() =>
-      import('./Taskbar').then(module => module.default)
-      );
 
 var placeholder;
- import('../data/strings')
-                .then((module) => {
-                  placeholder = module.placeholder;
-                });
 var info;
-  import('../data/strings')
-     .then((module) => {
-        info = module.info;
-    });
+
+ import('../data/strings')
+  .then((module) => {
+    placeholder = module.placeholder;
+    info = module.info;
+  });
+
 
 var darkScheme;
-  import('../data/themes')
-       .then((module) => {
-            darkScheme = module.darkScheme;
-      });
+var lightScheme;
 
-  var lightScheme;
-    import('../data/themes')
-       .then((module) => {
-          lightScheme = module.lightScheme;
-      });
+  import('../data/themes')
+  .then((module) => {
+      darkScheme = module.darkScheme;
+      lightScheme = module.lightScheme;
+  });
 
 //---------------------------------------------------------------------------
 

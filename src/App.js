@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import asyncComponent from './components/asyncComponent/async'
 import './App.scss';
-
-const Wrapper = asyncComponent(() =>
-        import('./components/Wrapper').then(module => module.default)
-);
-
+import Wrapper from './components/Wrapper'
 
 class App extends Component {
   render() {

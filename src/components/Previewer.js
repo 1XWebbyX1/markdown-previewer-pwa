@@ -1,11 +1,8 @@
 import React from 'react'
 import marked from "marked";
-import asyncComponent from './asyncComponent/async'
+import Toolbar from './Toolbar'
 
 
-const Toolbar = asyncComponent(() =>
-        import('./Toolbar').then(module => module.default)
-);
 
 marked.setOptions({
   breaks: true,

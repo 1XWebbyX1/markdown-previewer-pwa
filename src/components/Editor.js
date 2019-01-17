@@ -1,10 +1,6 @@
 import React from 'react'
-import asyncComponent from './asyncComponent/async'
+import Toolbar from './Toolbar'
 
-
-const Toolbar = asyncComponent(() =>
-        import('./Toolbar').then(module => module.default)
-);
 
 
 class Editor extends React.Component {

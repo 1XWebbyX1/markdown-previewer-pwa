@@ -59,6 +59,7 @@ This Project was inspired by(not entirely based on)  suggested  user stories  at
 
 - Implement PWA features
 - Export Function
+- Sync scroll
 
 # License
 

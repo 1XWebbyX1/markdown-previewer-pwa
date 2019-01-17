@@ -1,6 +1,8 @@
 import React from 'react'
 import $ from 'jquery'
-import '@fortawesome/fontawesome-free/css/all.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExpandArrowsAlt} from '@fortawesome/free-solid-svg-icons'
+//import '@fortawesome/fontawesome-free/css/all.css'
 
 class Toolbar extends React.Component {
 
@@ -8,7 +10,7 @@ class Toolbar extends React.Component {
     return (
        <div class="toolbar">
           <h3>{this.props.text}</h3>
-          <i className='arrows fa fa-expand-arrows-alt' onClick={this.props.onClick}></i>
+          <div onClick={this.props.onClick}><FontAwesomeIcon className='arrows' icon={faExpandArrowsAlt} /></div>
        </div>
     );
   }
