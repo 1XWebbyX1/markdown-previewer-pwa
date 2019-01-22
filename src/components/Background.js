@@ -4,6 +4,7 @@ import SessionStorageManager from './sessionStorageManager'
 import Editor from './Editor'
 import Preview from './Previewer'
 import Taskbar from './Taskbar'
+import {faInfoCircle, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
 const SSM = new SessionStorageManager();
 
@@ -58,8 +59,9 @@ class Background extends React.Component {
     super(props);
     this.state = {
       markdown: placeholder,
-      placeholder: placeholder,
-      lastClicked: ''
+      placeholder: this.markdown,
+      lastClicked: '',
+      icon: faInfoCircle
     };
     this.handleChange = this.handleChange.bind(this);
     this.switchTheme = this.switchTheme.bind(this);
@@ -91,9 +93,10 @@ class Background extends React.Component {
     if(this.props.markdown !== info){
        this.props.addText(info);
     }
-    else this.props.addText(this.state.placeholder);
-    $('#info').toggleClass('fa-info-circle');
-    $('#info').toggleClass('fa-arrow-left');
+    else {
+      console.log(this.state.placeholder);
+      this.props.addText(placeholder);
+    }
 }
 
   goEditorFullScreen(){
@@ -170,14 +173,17 @@ inserter(_stylePhrase, buttonType) {
   }
 
 handleClick(e){
-  let symbol = buttonTypes[e.target.className];
-  let style = buttonStyles[e.target.className];
+  //e.stopPropagation();
+  var target = (buttonTypes[e.target.className] == undefined) ? e.target.parentElement||e.target : e.target.parentElement||e.target;
+  console.log(target);
+  let symbol = buttonTypes[target.className];
+  let style = buttonStyles[target.className];
 
-  let stylePhrase = e.target.className == 'fa fa-bold' ||
-                      e.target.className == 'fa fa-italic' ||
-                      e.target.className == 'fa fa-code' ?
+  let stylePhrase = target.className == 'fa fa-bold' ||
+                      target.className == 'fa fa-italic' ||
+                      target.className == 'fa fa-code' ?
                       symbol+style+symbol : '\n'+ symbol+style;
-  if(e.target.className == 'fa fa-link') {
+  if(target.className == 'fa fa-link') {
     stylePhrase = symbol+style;
   }
   let userSelection = this.getSelectionText();
@@ -193,7 +199,7 @@ handleClick(e){
 
     // INSERT / UNDO INSERT
    if (this.state.lastClicked == 'insert' || this.state.lastClicked == 'undo insert') {
-     if (this.state.lastClicked == 'insert' && lastStyle == e.target.className) {
+     if (this.state.lastClicked == 'insert' && lastStyle == target.className) {
        var value = field.value.substring(0, startPos - SSM.get('insert').length) + field.value.substring(startPos - SSM.get('insert').length).replace(SSM.get('insert'), '');
        this.props.addText(value);
        this.setState({
@@ -201,10 +207,10 @@ handleClick(e){
         });
        setTimeout( () => this.setTextSelect(-1, -1), 0); //update the caret position
      } else {
-       this.inserter(stylePhrase, e.target.className);
+       this.inserter(stylePhrase, target.className);
      }
   }else { //to insert the first time
-   this.inserter(stylePhrase, e.target.className);
+   this.inserter(stylePhrase, target.className);
  }
 }
 
@@ -245,7 +251,7 @@ save(){
   render() {
     return (
        <div class="back">
-         <Taskbar onClick={this.handleClick} toggleInfo={this.toggleInfo} switchTheme={this.switchTheme} save={this.save} />
+         <Taskbar onClick={this.handleClick} toggleInfo={this.toggleInfo} switchTheme={this.switchTheme} save={this.save} icon={this.state.icon}/>
         <div class="parent">
          <Editor markdown={this.props.markdown} onChange={this.handleChange} onClick={this.goEditorFullScreen}/>
          <Preview markdown={this.props.markdown} onClick={this.goPreviewFullScreen}/>

@@ -1,8 +1,6 @@
 import React from 'react'
-import $ from 'jquery'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExpandArrowsAlt} from '@fortawesome/free-solid-svg-icons'
-//import '@fortawesome/fontawesome-free/css/all.css'
 
 class Toolbar extends React.Component {
 

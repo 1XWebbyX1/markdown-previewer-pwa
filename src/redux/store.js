@@ -1,13 +1,6 @@
 import {createStore} from 'redux'
 import {placeholder} from '../data/strings'
 
-/*var placeholder;
-
- import('../data/strings')
-  .then((module) => {
-    placeholder = module.placeholder;
-  });*/
-
 const ADDTEXT = 'ADDTEXT';
 
 //redux action creator_____________________________________________

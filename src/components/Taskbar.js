@@ -1,5 +1,7 @@
 import React from 'react'
-import '@fortawesome/fontawesome-free/css/all.css'
+//import '@fortawesome/fontawesome-free/css/all.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSave, faInfoCircle, faBold, faItalic, faQuoteLeft, faLink, faImage, faList, faListOl, faCode, faToggleOn} from '@fortawesome/free-solid-svg-icons'
 
 
 class Taskbar extends React.Component{
@@ -7,17 +9,17 @@ class Taskbar extends React.Component{
     return(
       <div id='taskbar'>
       <ul>
-       <li><i id="save" class='fa fa-save' onClick={this.props.save}></i></li>
-       <li><i id="info" onClick={this.props.toggleInfo} class='fa fa-info-circle'></i></li>
-       <li><i id="bold" onClick={this.props.onClick} className='fa fa-bold'></i></li>
-       <li><i id="italic" onClick={this.props.onClick} className='fa fa-italic'></i></li>
-       <li><i id="quote" onClick={this.props.onClick} className='fa fa-quote-left'></i></li>
-       <li><i id="link" onClick={this.props.onClick} className='fa fa-link'></i></li>
-       <li><i id="picture" onClick={this.props.onClick} className='fa fa-image'></i></li>
-       <li><i  onClick={this.props.onClick} className="fa fa-list"/></li>
-       <li><i  onClick={this.props.onClick} className="fa fa-list-ol"/></li>
-       <li><i  onClick={this.props.onClick} className="fa fa-code"/></li>
-       <li><i id="theme-switch" class='fa fa-toggle-on' onClick={this.props.switchTheme}></i></li>
+       <li><div onClick={this.props.save} className='fa fa-save'><FontAwesomeIcon id="save" className='fa fa-save icon' icon={faSave}/></div></li>
+       <li><div onClick={this.props.toggleInfo} className='fa fa-info-circle'><FontAwesomeIcon id="info" className='fa fa-info-circle icon' icon={faInfoCircle}/></div></li>
+       <li><div onClick={this.props.onClick} className='fa fa-bold'><FontAwesomeIcon id="bold" className='fa fa-bold icon' icon={faBold}/></div></li>
+       <li><div onClick={this.props.onClick} className='fa fa-italic'><FontAwesomeIcon id="italic" className='fa fa-italic icon' icon={faItalic}/></div></li>
+       <li><div onClick={this.props.onClick} className='fa fa-quote-left'><FontAwesomeIcon id="quote" className='fa fa-quote-left icon' icon={faQuoteLeft}/></div></li>
+       <li><div onClick={this.props.onClick} className='fa fa-link'><FontAwesomeIcon id="link" className='fa fa-link icon' icon={faLink}/></div></li>
+       <li><div onClick={this.props.onClick} className='fa fa-image'><FontAwesomeIcon id="picture" className='fa fa-image icon' icon={faImage}/></div></li>
+       <li><div onClick={this.props.onClick} className='fa fa-list'><FontAwesomeIcon className='fa fa-list icon' icon={faList}/></div></li>
+       <li><div onClick={this.props.onClick} className='fa fa-list-ol'><FontAwesomeIcon className='fa fa-list-ol icon' icon={faListOl}/></div></li>
+       <li><div onClick={this.props.onClick} className='fa fa-code'><FontAwesomeIcon className='fa fa-code icon' icon={faCode}/></div></li>
+       <li><div onClick={this.props.switchTheme} className='fa fa-toggle-on'><FontAwesomeIcon id="theme-switch" className='fa fa-toggle-on icon' icon={faToggleOn}/></div></li>
        </ul>
       </div>
 
