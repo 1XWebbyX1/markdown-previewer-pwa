@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taskbar renders correctly 1`] = `
+<div
+  id="taskbar"
+>
+  <ul>
+    <li>
+      <i
+        className="fa fa-save"
+        id="save"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-info-circle"
+        id="info"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-bold"
+        id="bold"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-italic"
+        id="italic"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-quote-left"
+        id="quote"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-link"
+        id="link"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-image"
+        id="picture"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-list"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-list-ol"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-code"
+        onClick={[MockFunction]}
+      />
+    </li>
+    <li>
+      <i
+        className="fa fa-toggle-on"
+        id="theme-switch"
+        onClick={[MockFunction]}
+      />
+    </li>
+  </ul>
+</div>
+`;

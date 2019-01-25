@@ -1,6 +1,6 @@
 import React from 'react'
 import marked from "marked";
-import Toolbar from './Toolbar'
+import Toolbar from '../Toolbar/Toolbar'
 
 
 
@@ -22,7 +22,7 @@ renderer.code = function(code, language) {
 class Preview extends React.Component {
   render() {
     return (
-        <div class="preview">
+        <div className="preview">
             <Toolbar id="preview-tool" text='Previewer' onClick={this.props.onClick}/>
             <div id="view" dangerouslySetInnerHTML={{__html: marked(
             this.props.markdown, { renderer: renderer })}} />

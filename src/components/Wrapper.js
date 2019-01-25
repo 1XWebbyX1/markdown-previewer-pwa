@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Provider } from 'react-redux'
-import Background from './Background'
+import Background from './Background/Background'
 import store from '../redux/store'
 import {mapStateToProps} from '../redux/utilities/mapping-functions'
 import {mapDispatchToProps} from '../redux/utilities/mapping-functions'

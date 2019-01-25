@@ -1,9 +1,9 @@
 import React from 'react'
 import $ from 'jquery'
 import SessionStorageManager from './sessionStorageManager'
-import Editor from './Editor'
-import Preview from './Previewer'
-import Taskbar from './Taskbar'
+import Editor from './Editor/Editor'
+import Preview from './Previewer/Previewer'
+import Taskbar from './Taskbar/Taskbar'
 
 const SSM = new SessionStorageManager();
 
@@ -11,7 +11,7 @@ const SSM = new SessionStorageManager();
 var placeholder;
 var info;
 
- import('../data/strings')
+ import('../../data/strings')
   .then((module) => {
     placeholder = module.placeholder;
     info = module.info;
@@ -21,7 +21,7 @@ var info;
 var darkScheme;
 var lightScheme;
 
-  import('../data/themes')
+  import('../../data/themes')
   .then((module) => {
       darkScheme = module.darkScheme;
       lightScheme = module.lightScheme;
@@ -222,15 +222,14 @@ handleClick(e){
           }
          this.theme = 'dark';
    }
-        //toggle blink animation ----------------------------------------
-   import ('../sass/03-utilities/_animations.scss')
-      .then(this.animate);
+   //toggle blink animation ----------------------------------------
+    this.animate();
 }
 
 
 
 save(){
-       this.setState({placeholder : $('.editor textarea').text()});
+   this.setState({placeholder : $('.editor textarea').text()});
  }
 
 
