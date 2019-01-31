@@ -1,0 +1,33 @@
+
+.wrapper-container{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+
+  .dark{
+    background: #212121;
+    color: #f2f2f2;
+  }
+
+  .light{
+    background: #e6e6e6;
+    color: black;
+  }
+
+  .flexbox-wrap{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0.12%;
+    width: 49.5%;
+    height: 100%;
+
+   .textarea {
+     padding: 80px 15px;
+     padding-bottom: 10px;
+     overflow: scroll;
+     overflow-x: hidden;
+     font-size: calc(0.6em + 0.4vw);
+    }
+  }
+}

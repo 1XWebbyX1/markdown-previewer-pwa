@@ -1,71 +1,46 @@
 @media only screen and (max-width: 580px) {
   //for mobile phones or small tablets
+ body .wrapper-container{
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
 
-  body .back {
-    width: 100vw;
-    height: 100vh;
-    .parent{
-      flex-direction: column;
-      justify-content: flex-start;
-      height: 99vh;
-      &:focus-within {min-height: 700px !important;}
-    }
-  }
-
-  .editor {
-    margin-top: 13%;
-    overflow-x: hidden;
-    width: 100%!important;
-    height: 50%;
-    textarea:focus-within {
-      height: 50% !important;
-      font-size: 4vw !important;
-    }
-
-    .toolbar{
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .arrows{
-        display: inline-block;
-        padding-right: 4%;
-      }
-      h3 {
-        padding: 5%;
-        padding-right: 0;
-        font-size: 4.7vw;
-        text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
+    .editor{
+      height: inherit;
+      textarea{
+         padding: 20px 15px;
+         height: 100%;
       }
     }
-  }
 
-  .preview{
-    margin-top: 0.5%;
-    overflow-x: hidden;
-    width: 100%!important;
-    height: 50%;
-    code{
-      width: 50%;
-      height: auto;
-      padding: 1px 2px 2px 2px;
-      font-size: 11px !important;
+  .fullScreen{
+      height: 99%!important;
+      visibility: visible;
     }
-    .toolbar{
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .arrows{
-        display: inline-block;
-        padding-right: 4%;
-      }
-      h3 {
-        padding: 5%;
-        padding-right: 0;
-        font-size: 4.7vw;
-        text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
-      }
+    .minimize{
+      height: 0!important;
+      visibility: hidden!important;
     }
-  }
+   .flexbox-wrap{
+     width: 100%;
+     height: 49.3%;
+     visibility: visible;
+
+    .textarea {
+      padding: 20px 15px;
+      z-index: 99;
+     }
+
+     .header{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       padding: 20px;
+       align-items: center;
+       .arrows{
+         display: inline-flex;
+       }
+     }
+   }
+ }
 }

@@ -1,31 +1,19 @@
-@charset 'UTF-8';
-
-
-
-// 0. Settings – contains root variables
-@import
-  '00-settings/_vars';
 
 
   // 1. Generic – reset and/or normalize styles
   @import
     '01-generic/_base';
 
-
-// 2. Components – specific UI components. This is where majority of our work takes place and our UI components are often composed of Objects and Components
-
-@import
-    '02-components/Background',
-    '02-components/Taskbar',
+  @import
+    '02-components/WrapperContainer',
     '02-components/Editor',
     '02-components/Previewer',
-    '02-components/Toolbar';
+    '02-components/Toolbar',
+    '02-components/Header';
+    // 3. Utilities– utilities and helper classes with ability to override anything
+   @import
+      '03-utilities/_animations';
 
-
-  // 3. Utilities– utilities and helper classes with ability to override anything
-@import
-    '03-utilities/_animations';
-
-// 4. Tools – media-queries
-@import
-    '04-tools/_media-queries';
+    // 4. Tools – media-queries
+   @import
+     '04-tools/_media-queries';

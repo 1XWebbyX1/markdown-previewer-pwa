@@ -3,15 +3,11 @@
 
 
 body {
-  background-color: black; //fallback
-  background-color: var(--body);
-  color: white; // fallback
-  color: var(--font);
+  background: linear-gradient(to right top, #0e04d1, #c90097, #fb0059, #ff5d27, #eba612);
   font-family: "Cutive", serif;
   min-height: 100%;
   width: 100%;
   transition: all 1s;
-  overflow-y: scroll;
 }
 
 #app{
@@ -21,11 +17,4 @@ body {
 ::-webkit-scrollbar {
   width: 0px; /* remove scrollbar space */
   background: transparent; /* optional: just make scrollbar invisible */
-}
-
-@-moz-document url-prefix() {
-  html,
-  body {
-    overflow: hidden !important;
-  }
 }

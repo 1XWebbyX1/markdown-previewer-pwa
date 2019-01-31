@@ -8,11 +8,13 @@ For web version, visit [github](https://1xwebbyx1.github.io/markdown-previewer-p
 
 # Technologies
 Project is created with :
-- React version : 16.7
-- Sass: 4.11
-- jQuery: 3.3
-- Redux: 4.0
-- Marked: 0.5
+- React
+- Sass
+- Redux
+- Marked
+- Jest
+- Enzyme
+- Chai
 
 # Key features
 - Live markdown preview
@@ -46,6 +48,13 @@ $ npm run build
 You will then be able to access it at localhost:5000
 
 Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
+
+# Running Tests
+
+```shell
+$ npm test
+```
+
 
 # You may also like
 - [Pomodoro Clock](https://github.com/1XWebbyX1/pomodoro-clock-pwa)

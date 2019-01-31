@@ -1,20 +1,29 @@
-.toolbar {
-  background: var(--toolbar);
-  color: var(--textFont);
-  box-shadow: inset 2px 5px 20px #2e2e2e;
-  margin-top: -3%;
-  height: 6.5vmax;
+.toolbar{
+  height: auto;
+  width: 100%;
+  z-index: 99;
+  background: #2d2d2d;
+  box-shadow: 0px 5px 15px black, 0px 4px inset #444;
+  >ul{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style-type: none;
+    text-decoration: none;
 
-  .arrows{
-    display: none;
-  }
-
-  h3 {
-    user-select: none;
-    padding: 4%;
-    padding-right: 0;
-    font-size: 2.4vmax;
-    text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c,
-      0 3px 0 #2a2a2a, 0 4px 0 #282828;
+  li {
+    display: inline-block;
+    box-shadow: .5px 0px 5px inset rgba(0,0,0,0.3);
+   .icon{
+     font-size: calc(0.9em + 0.8vw);
+     margin: 8px 1.3vw;
+     padding:0  0.5vw;
+     cursor: pointer;
+     svg{
+      width: 100%;
+      height: 100%;
+     }
+    }
+   }
   }
 }

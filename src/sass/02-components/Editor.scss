@@ -1,28 +1,18 @@
-.editor {
-  width: 49.5%;
-  margin: 0 0.2%;
-  margin-top: 100px;
-  height: 100%;
-  overflow: scroll;
-  overflow-x: hidden;
-  background: #212121; //fallback
-  background: var(--textArea);
-  color: #f2f2f2; //fallback
-  color: var(--textFont);
 
-  textarea {
-    margin-top: 5%;
-    background: #0d0d0d; //fallback
-    background: var(--textArea);
-    color: #f2f2f2; //fallback
-    color: var(--textFont);
-    font-size: calc(0.9em + 0.2vw);
-    width: 95%;
-    height: 100%;
-    padding: 15px;
-    padding-right: 0;
-    outline: none;
-    overflow-y: scroll;
-    border: none;
+  .editor {
+    height: 90vh;
+    margin-right: 0.1px;
+
+    textarea {
+     padding: 80px 15px;
+     padding-bottom: 5px;
+     box-sizing: border-box;
+     background: #212121;
+     color: #f2f2f2;
+     font-size: calc(0.9em + 0.2vw);
+     outline: none;
+     border: none;
+     width: 100%;
+     height: 85%;
   }
 }

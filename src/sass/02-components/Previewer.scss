@@ -1,38 +1,20 @@
-
 .preview {
-  overflow: scroll;
-  overflow-x: hidden;
   word-wrap: break-word;
-  margin: 0 0.2%;
-  padding-right: 0.2%;
-  margin-top: 100px;
+  line-height: 1.4;
   margin-left: 0;
-  width: 49.8%;
-  height: 100%;
-  background: #0d0d0d; //fallback
-  background: var(--textArea);
-
-  #view {
-    display: block;
-    padding: 5%;
-    padding-right: 0;
-    margin-top: 5%;
-    line-height: 1.2;
-  }
-
   //customizing styles for markdown library----------
 
   blockquote {
   border-left: 3px solid #e60099;
-  background:  #f0e6ff;
+  background:  white;
   color: #e60099;
-  padding: 0.2px 5px;
+  padding: 0.2px 15px;
   margin-left: 25px;
 }
 
 code {
   background: white;
-  word-wrap: break-word;
+  word-wrap: break-word!important;
   color: #e60099;
   padding: 1px 4px 2px 4px;
 }
@@ -55,11 +37,8 @@ table {
 }
 
 td, th {
-  border: 2px solid #f0e6ff;
-  padding-left: 5px;
-  padding-right: 5px;
+  border: 2px solid #99004d;
+  padding: 10px;
 }
-
-
 
 }
