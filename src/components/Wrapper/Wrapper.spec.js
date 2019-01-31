@@ -98,9 +98,6 @@ describe('Wrapper', () => {
       expect(spyInsertStyle.getCalls()[0].args[0]).to.equal('**Strong Text**');
       expect(spyInsertAtCaret.calledOnce).to.be.true;
       expect(spyTextSelect.calledOnce).to.be.true;
-      icon.simulate('click'); //second click for undo
-      expect(spyInsertAtCaret.calledOnce).to.be.true; //insertAtCaret not called again
-      expect(spyTextSelect.calledTwice).to.be.true; //directly goes to setTextSelect to undo
     })
 
   it('should call switchTheme once toggle icon click and update theme class', () => {

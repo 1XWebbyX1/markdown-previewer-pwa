@@ -1,6 +1,9 @@
 .toolbar{
+  position: fixed;
+  top: 0;
+  left: 0;
   height: auto;
-  width: 100%;
+  width: 100vw;
   z-index: 99;
   background: #2d2d2d;
   box-shadow: 0px 5px 15px black, 0px 4px inset #444;
@@ -17,7 +20,7 @@
    .icon{
      font-size: calc(0.9em + 0.8vw);
      margin: 8px 1.3vw;
-     padding:0  0.5vw;
+     padding:0  2vw;
      cursor: pointer;
      svg{
       width: 100%;

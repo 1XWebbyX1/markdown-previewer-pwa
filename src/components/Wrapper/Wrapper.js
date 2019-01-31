@@ -2,10 +2,6 @@ import React from 'react'
 import Editor from './Editor/Editor.js'
 import Previewer from './Previewer/Previewer.js'
 import Header from './Header/Header.js'
-import SessionStorageManager from './sessionStorageManager'
-
-//session storage to preserve caret position in editor
-const SSM = new SessionStorageManager();
 
 class Wrapper extends React.Component {
 
@@ -79,23 +75,19 @@ class Wrapper extends React.Component {
        selection.text = value;
     }else if(field.selectionStart || field.selectionStart == '0'){ //other browsers
         let startPos = field.selectionStart;
-        SSM.save('position', startPos);
         let endPos = field.selectionEnd;
         field.value = field.value.substring(0, startPos) + value + field.value.substring(endPos, field.value.length);
         field.focus({preventScroll:true});
         this.setTextSelect(startPos + this.charLength, startPos + value.length - this.charLength);
     }else {
-       field.focus();
+       field.focus({preventScroll: false});
        field.value += value;
     }
   }
 
   setTextSelect(caretStart, caretEnd){ //selected text when string is inserted
      var field = this.textarea.current;
-     if(caretStart == -1){ //for undo case
-        caretStart = SSM.get('position');
-        field.setSelectionRange(caretStart, caretStart);
-     }else if(field.selectionStart){
+      if(field.selectionStart){
         field.setSelectionRange(caretStart, caretEnd);
      }
   }
@@ -106,16 +98,7 @@ class Wrapper extends React.Component {
     let endPos = field.selectionEnd;
 
     if(value !== undefined){
-      if(!this.insert){ //to insert value
-        this.insert = true;
         this.insertAtCaret(value);
-        SSM.save('insert', value);
-      }
-      else{ //to undo value insert
-        this.insert = false;
-        field.value = field.value.substring(0, startPos - SSM.get('insert').length) + field.value.substring(startPos - SSM.get('insert').length).replace(SSM.get('insert'), '');
-        this.setTextSelect(-1, -1);
-      }
     }
   }
 
