@@ -70,17 +70,16 @@ class Wrapper extends React.Component {
   insertAtCaret(value){
     var field = this.textarea.current;
     if(document.selection){ //older IE support
-       field.focus({preventScroll:true});
+       field.focus();
        var selection = document.selection.createRange();
        selection.text = value;
     }else if(field.selectionStart || field.selectionStart == '0'){ //other browsers
         let startPos = field.selectionStart;
         let endPos = field.selectionEnd;
+        field.focus();
         field.value = field.value.substring(0, startPos) + value + field.value.substring(endPos, field.value.length);
-        field.focus({preventScroll:true});
         this.setTextSelect(startPos + this.charLength, startPos + value.length - this.charLength);
     }else {
-       field.focus({preventScroll: false});
        field.value += value;
     }
   }
