@@ -4,7 +4,7 @@ export const placeholder =
 
 // To find what this can do, view our sample text below or start editing in the editor and see the results rendered in the previewer.
 
-## For more information, click on the info icon at the top right corner of the screen
+## For more information, click on the info icon at the top left corner of the screen
 ### Here's the sample to show you some cool stuff:
 
 Heres some code, \`<div></div>\`, between 2 back ticks.

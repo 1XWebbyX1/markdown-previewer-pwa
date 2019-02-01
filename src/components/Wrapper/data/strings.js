@@ -57,12 +57,14 @@ export const info = `
 Markdown is a text-to-HTML conversion tool for web writers. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML).
 
 To see what this can do,
-Start writing plain text in the editor or load our sample text by clicking on the back icon at the top right corner of the screen and quickly see the text rendered in the Markdown Previewer.
+Start writing plain text in the editor or load our sample text by clicking on the back icon and quickly see the text rendered in the Markdown Previewer.
+You can also click on the toolbar formatting options to add a style format at the cursor position.
+This project uses [marked library](https://marked.js.org/#/README.md).
 
 Here is a tip--
 ♥ You can switch the theme using the toggle button at the top right corner of the screen ♥
 
 
-Important Note: The state will be saved until editor is reloaded.
+Important Note: The state will be saved only until the editor is reloaded.
 
 `;

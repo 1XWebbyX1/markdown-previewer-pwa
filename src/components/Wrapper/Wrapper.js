@@ -17,6 +17,7 @@ class Wrapper extends React.Component {
     this.expandEditor = this.expandEditor.bind(this);
     this.expandPreviewer = this.expandPreviewer.bind(this);
     this.info = '';
+    this.current_value = '';
     this.markdown = '';
     this.showInfo = false;
     this.textarea = React.createRef();
@@ -34,10 +35,11 @@ class Wrapper extends React.Component {
   }
 
   toggleInfo(){
+    if(!this.showInfo){this.current_value = this.textarea.current.value;} //save current value to go back to
     this.showInfo = !this.showInfo; //show placeholder or info based on boolean
     (this.showInfo)  ? //condition for info on display
      this.props.addText(this.info) : //if true
-     this.props.addText(this.markdown); //if false
+     this.props.addText(this.current_value); //if false
   }
 
   switchTheme(){
@@ -68,7 +70,7 @@ class Wrapper extends React.Component {
   }
 
   insertAtCaret(value){
-    var field = this.textarea.current;
+    let field = this.textarea.current;
     if(document.selection){ //older IE support
        field.focus();
        var selection = document.selection.createRange();
@@ -85,14 +87,14 @@ class Wrapper extends React.Component {
   }
 
   setTextSelect(caretStart, caretEnd){ //selected text when string is inserted
-     var field = this.textarea.current;
+     let field = this.textarea.current;
       if(field.selectionStart){
         field.setSelectionRange(caretStart, caretEnd);
      }
   }
 
   insertStyle(value){
-    var field = this.textarea.current;
+    let field = this.textarea.current;
     let startPos = field.selectionStart;
     let endPos = field.selectionEnd;
 

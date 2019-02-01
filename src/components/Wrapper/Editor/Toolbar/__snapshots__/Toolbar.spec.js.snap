@@ -11,6 +11,7 @@ exports[`Toolbar renders correctly 1`] = `
         className="svg-inline--fa fa-info-circle fa-w-16 icon info"
         data-icon="info-circle"
         data-prefix="fas"
+        onClick={[Function]}
         role="img"
         style={Object {}}
         viewBox="0 0 512 512"
